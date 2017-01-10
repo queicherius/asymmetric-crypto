@@ -1,0 +1,24 @@
+{
+  "name": "asymmetric-crypto",
+  "version": "0.1.0",
+  "description": "Encryption and signing using public-key cryptography (via tweetnacl)",
+  "main": "./build/index.js",
+  "scripts": {
+    "build": "abc build",
+    "test": "abc test && abc lint"
+  },
+  "author": "queicherius@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/queicherius/asymmetric-crypto"
+  },
+  "dependencies": {
+    "ed2curve": "^0.2.1",
+    "tweetnacl": "^0.14.5",
+    "tweetnacl-util": "^0.13.5"
+  },
+  "devDependencies": {
+    "abc-environment": "^1.0.5"
+  }
+}

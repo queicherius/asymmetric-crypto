@@ -1,0 +1,11 @@
+{
+  "presets": ["latest", "stage-0"],
+  "env": {
+    "test": {
+      "plugins": [
+        ["istanbul", {"include": ["src/**"]}],
+        "rewire"
+      ]
+    }
+  }
+}
