@@ -1,6 +1,12 @@
 import nacl from 'tweetnacl'
 import naclUtil from 'tweetnacl-util'
 import ed2curve from 'ed2curve'
+import memoize from 'fast-memoize'
+
+const convert = {
+  publicKey: memoize(ed2curve.convertPublicKey),
+  secretKey: memoize(ed2curve.convertSecretKey)
+}
 
 export function keyPair () {
   const keyPair = nacl.sign.keyPair()
@@ -24,8 +30,8 @@ export function fromSecretKey (secretKey) {
 
 export function encrypt (data, theirPublicKey, mySecretKey) {
   data = naclUtil.decodeUTF8(data)
-  theirPublicKey = ed2curve.convertPublicKey(naclUtil.decodeBase64(theirPublicKey))
-  mySecretKey = ed2curve.convertSecretKey(naclUtil.decodeBase64(mySecretKey))
+  theirPublicKey = convert.publicKey(naclUtil.decodeBase64(theirPublicKey))
+  mySecretKey = convert.secretKey(naclUtil.decodeBase64(mySecretKey))
 
   const nonce = nacl.randomBytes(nacl.box.nonceLength)
 
@@ -40,8 +46,8 @@ export function encrypt (data, theirPublicKey, mySecretKey) {
 export function decrypt (data, nonce, theirPublicKey, mySecretKey) {
   data = naclUtil.decodeBase64(data)
   nonce = naclUtil.decodeBase64(nonce)
-  theirPublicKey = ed2curve.convertPublicKey(naclUtil.decodeBase64(theirPublicKey))
-  mySecretKey = ed2curve.convertSecretKey(naclUtil.decodeBase64(mySecretKey))
+  theirPublicKey = convert.publicKey(naclUtil.decodeBase64(theirPublicKey))
+  mySecretKey = convert.secretKey(naclUtil.decodeBase64(mySecretKey))
 
   data = nacl.box.open(data, nonce, theirPublicKey, mySecretKey)
 

@@ -28,6 +28,9 @@ describe('encryption', () => {
 
     const decrypted = module.decrypt(encrypted.data, encrypted.nonce, myKeyPair.publicKey, theirKeyPair.secretKey)
     expect(decrypted).to.equal(data)
+
+    const decrypted2 = module.decrypt(encrypted.data, encrypted.nonce, myKeyPair.publicKey, theirKeyPair.secretKey)
+    expect(decrypted2).to.equal(data)
   })
 
   it('fails decryption when using the wrong key', () => {

@@ -67,6 +67,7 @@ npm test
 - [`tweetnacl`](https://github.com/dchest/tweetnacl-js) for the cryptographic implementation
 - [`tweetnacl-util`](https://github.com/dchest/tweetnacl-util-js) for converting into / from strings
 - [`ed2curve`](https://github.com/dchest/ed2curve-js) for converting *Ed25519* keys into *curve25519-xsalsa20-poly1305* keys (so you can encrypt and sign with the same key pair)
+- [`fast-memoize`](https://www.npmjs.com/package/fast-memoize) to make converting keys more efficient
 
 ## Licence
 
