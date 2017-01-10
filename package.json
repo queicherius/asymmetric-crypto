@@ -5,7 +5,8 @@
   "main": "./build/index.js",
   "scripts": {
     "build": "abc build",
-    "test": "abc test && abc lint"
+    "test": "abc test && abc lint",
+    "version": "abc build"
   },
   "author": "queicherius@gmail.com",
   "license": "MIT",
