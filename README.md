@@ -1,7 +1,7 @@
 # asymmetric-crypto
 
 [![Build Status](https://img.shields.io/travis/queicherius/asymmetric-crypto.svg?style=flat-square)](https://travis-ci.org/queicherius/asymmetric-crypto)
-[![Coverage Status](https://img.shields.io/codecov/c/github/queicherius/asymmetric-crypto/master.svg?style=flat-square)](https://codecov.io/github/queicherius/asymmetric-crypto)
+[![Coverage Status](https://img.shields.io/codecov/c/github/queicherius/asymmetric-crypto/master.svg?style=flat-square)](https://codecov.io/github/queicherius/asymmetric-crypto) [![Greenkeeper badge](https://badges.greenkeeper.io/queicherius/asymmetric-crypto.svg)](https://greenkeeper.io/)
 
 > Encryption and signing using public-key cryptography (via [`tweetnacl`](https://github.com/dchest/tweetnacl-js))
 
