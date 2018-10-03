@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "6"
-after_script: "$(npm bin)/codecov"
+  - "8"
+after_script: "curl -s https://codecov.io/bash | bash"
 branches:
   only:
     - master

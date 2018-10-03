@@ -16,7 +16,7 @@ This module can be used for Node.js as well as browsers using [Browserify](https
 ## Usage
 
 ```js
-import * as crypto from 'asymmetric-crypto'
+const crypto = require('asymmetric-crypto')
 
 // Generate a key pair
 const keyPair = crypto.keyPair()

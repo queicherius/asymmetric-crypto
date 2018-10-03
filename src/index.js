@@ -1,14 +1,14 @@
-import nacl from 'tweetnacl'
-import naclUtil from 'tweetnacl-util'
-import ed2curve from 'ed2curve'
-import memoize from 'fast-memoize'
+const nacl = require('tweetnacl')
+const naclUtil = require('tweetnacl-util')
+const ed2curve = require('ed2curve')
+const memoize = require('fast-memoize')
 
 const convert = {
   publicKey: memoize(ed2curve.convertPublicKey),
   secretKey: memoize(ed2curve.convertSecretKey)
 }
 
-export function keyPair () {
+function keyPair () {
   const keyPair = nacl.sign.keyPair()
 
   return {
@@ -17,7 +17,7 @@ export function keyPair () {
   }
 }
 
-export function fromSecretKey (secretKey) {
+function fromSecretKey (secretKey) {
   secretKey = naclUtil.decodeBase64(secretKey)
 
   const keyPair = nacl.sign.keyPair.fromSecretKey(secretKey)
@@ -28,7 +28,7 @@ export function fromSecretKey (secretKey) {
   }
 }
 
-export function encrypt (data, theirPublicKey, mySecretKey) {
+function encrypt (data, theirPublicKey, mySecretKey) {
   data = naclUtil.decodeUTF8(data)
   theirPublicKey = convert.publicKey(naclUtil.decodeBase64(theirPublicKey))
   mySecretKey = convert.secretKey(naclUtil.decodeBase64(mySecretKey))
@@ -43,7 +43,7 @@ export function encrypt (data, theirPublicKey, mySecretKey) {
   }
 }
 
-export function decrypt (data, nonce, theirPublicKey, mySecretKey) {
+function decrypt (data, nonce, theirPublicKey, mySecretKey) {
   data = naclUtil.decodeBase64(data)
   nonce = naclUtil.decodeBase64(nonce)
   theirPublicKey = convert.publicKey(naclUtil.decodeBase64(theirPublicKey))
@@ -58,7 +58,7 @@ export function decrypt (data, nonce, theirPublicKey, mySecretKey) {
   return naclUtil.encodeUTF8(data)
 }
 
-export function sign (data, mySecretKey) {
+function sign (data, mySecretKey) {
   data = naclUtil.decodeUTF8(data)
   mySecretKey = naclUtil.decodeBase64(mySecretKey)
 
@@ -67,10 +67,19 @@ export function sign (data, mySecretKey) {
   return naclUtil.encodeBase64(data)
 }
 
-export function verify (data, signature, theirPublicKey) {
+function verify (data, signature, theirPublicKey) {
   data = naclUtil.decodeUTF8(data)
   signature = naclUtil.decodeBase64(signature)
   theirPublicKey = naclUtil.decodeBase64(theirPublicKey)
 
   return nacl.sign.detached.verify(data, signature, theirPublicKey)
+}
+
+module.exports = {
+  keyPair,
+  fromSecretKey,
+  encrypt,
+  decrypt,
+  sign,
+  verify
 }
