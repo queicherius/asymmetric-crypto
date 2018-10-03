@@ -1,6 +1,6 @@
 {
   "name": "asymmetric-crypto",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Encryption and signing using public-key cryptography (via tweetnacl)",
   "main": "./src/index.js",
   "scripts": {
