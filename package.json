@@ -13,7 +13,7 @@
     "url": "https://github.com/queicherius/asymmetric-crypto"
   },
   "dependencies": {
-    "ed2curve": "^0.2.1",
+    "ed2curve": "^0.3.0",
     "fast-memoize": "^2.0.2",
     "tweetnacl": "^1.0.0",
     "tweetnacl-util": "^0.15.0"
